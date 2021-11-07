@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.btn {
+  background-color: #2b8401;
+  color: #fff;
+  border: 0;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 20px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  text-transform: uppercase;
+  box-shadow: 0 3px #e5b68b;
+  z-index: 100;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+.img-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 500px;
+  width: 500px;
+  position: relative;
+  transition: 0.4s ease;
+}
+
+.img-boxes.big {
+  width: 600px;
+  height: 600px;
+}
+
+.img-boxes.big .img-box {
+  transform: rotateZ(360deg);
+}
+
+.img-box {
+  background-image: url('./images/vegan2.jpg');
+  background-repeat: no-repeat;
+  background-size: 500px 500px;
+  position: relative;
+  height: 125px;
+  width: 125px;
+  transition: 0.4s ease;
+}
+
+.img-box::before,
+.img-box::after {
+  content: '';
+  background-color: #e5b68b;
+  position: absolute;
+}
+
+.img-box::before {
+  bottom: -15px;
+  left: 8px;
+  height: 15px;
+  width: 100%;
+  transform: skewX(45deg);
+}
+
+.img-box::after {
+  top: 8px;
+  right: -15px;
+  height: 100%;
+  width: 15px;
+  transform: skewY(45deg);
+}
+
+
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+    overflow-x: scroll;
+  }
+}

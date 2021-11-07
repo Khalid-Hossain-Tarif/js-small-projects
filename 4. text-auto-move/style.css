@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #04b949;
+}
+
+.container {
+  max-width: 1180px;
+  padding: 0 30px;
+}
+
+.heading {
+  font-size: 5vw;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  color: #fff;
+}
