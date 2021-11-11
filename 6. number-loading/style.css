@@ -1,0 +1,35 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background-color: #212428;
+}
+
+.heading,
+.loading-number {
+  font-family: fantasy;
+  font-weight: bold;
+  text-align: center;
+}
+
+.heading {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.loading-number {
+  font-size: 30px;
+  color: yellow;
+  opacity: 0.7;
+}
+
+
