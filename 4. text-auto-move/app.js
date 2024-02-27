@@ -2,7 +2,7 @@
 "use strict";
 
 const textElement = document.getElementById("movingText");
-const movingText = 'Hi, I am Auto Moving Text!';
+const movingText = "Hi, I'm Auto Moving Text!";
 let idx = 1;
 let speed = 200;
 
