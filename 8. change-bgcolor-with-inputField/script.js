@@ -4,13 +4,18 @@ window.onload = () => {
 
 function main() {
   const root = document.getElementById('root')
-  const btn = document.getElementById('color-change-button')
   const output = document.getElementById('output')
+  const changeBtn = document.getElementById('color-change-btn')
+  const copyBtn = document.getElementById('copy-btn')
 
-  btn.addEventListener('click', function() {
+  changeBtn.addEventListener('click', function() {
     const bgColor = generateHexColor()
     root.style.backgroundColor = bgColor
     output.value = bgColor
+  })
+
+  copyBtn.addEventListener('click', function() {
+    navigator.clipboard.writeText(output.value)
   })
 }
 
