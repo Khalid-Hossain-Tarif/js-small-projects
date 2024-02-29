@@ -23,7 +23,20 @@ function main() {
       toasterDiv.remove();
       toasterDiv = null;
     }
-    generateToastMessage(`${output.value} copied`);
+
+    if (isValidHex(output.value)) {
+      generateToastMessage(`${output.value} copied`);
+    } else {
+      alert("color code not matched!");
+    }
+  });
+
+  //change bgColor based on use input
+  output.addEventListener("keyup", function (e) {
+    const color = e.target.value;
+    if (color && isValidHex(color)) {
+      root.style.backgroundColor = color;
+    }
   });
 }
 
@@ -47,18 +60,28 @@ function generateToastMessage(msg) {
     toasterDiv.classList.add("toaster-slide-out");
     toasterDiv.classList.remove("toaster-slide-in");
 
+    //toaster remove after animationend event
     toasterDiv.addEventListener("animationend", function () {
       toasterDiv.remove();
       toasterDiv = null;
     });
   });
 
-  setTimeout(() => {
-    toasterDiv.classList.add("toaster-slide-out");
-  }, 5000);
+  // setTimeout(() => {
+  //   toasterDiv.classList.add("toaster-slide-out");
+  // }, 5000);
 
-  setTimeout(() => {
-    toasterDiv.remove();
-    toasterDiv = null;
-  }, 5300);
+  // setTimeout(() => {
+  //   toasterDiv.remove();
+  //   toasterDiv = null;
+  // }, 5300);
+}
+
+//Hex color code validity check
+function isValidHex(color) {
+  if (color.length != 7) return false;
+  if (color[0] != "#") return false;
+
+  color = color.substring(1);
+  return /^[0-9A-Fa-f]{6}$/i.test(color);
 }
