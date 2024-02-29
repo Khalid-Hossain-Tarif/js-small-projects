@@ -28,18 +28,35 @@ body {
 }
 
 .input-block {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: stretch;
   gap: 4px;
   margin: 30px 0;
 }
 
+.input-block p {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  padding: 10px;
+  transform: translateY(-50%);
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  color: #000;
+  font-weight: bold;
+}
+
 input[type="text"] {
   outline: none;
-  border: 1px solid #707070;
+  border: 1px solid #ddd;
   background-color: #fff;
+  box-shadow: 2px 4px 10px #b3b1b1;
   color: #333;
   padding: 10px;
+  margin-left: 30px;
+  height: 40px;
   width: 300px;
 
   &:focus {
@@ -72,6 +89,7 @@ button {
 #copy-btn {
   background-color: blue;
   border: 1px solid blue;
+  box-shadow: 2px 4px 10px #b3b1b1;
   padding: 4px;
   display: grid;
   place-content: center;
