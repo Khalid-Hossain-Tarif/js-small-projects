@@ -13,7 +13,7 @@ function main() {
   changeBtn.addEventListener("click", function () {
     const bgColor = generateHexColor();
     root.style.backgroundColor = bgColor;
-    output.value = bgColor.substring(1);
+    output.value = bgColor.substring(1).toUpperCase();
   });
 
   //copy color code
