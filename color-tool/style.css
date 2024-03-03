@@ -103,7 +103,7 @@ button {
   }
 }
 
-#copy-btn {
+.copy-btn {
   background-color: blue;
   border: 1px solid blue;
   box-shadow: 2px 4px 10px #b3b1b1;

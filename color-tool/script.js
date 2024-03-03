@@ -9,7 +9,8 @@ function main() {
   const output = document.getElementById("output");
   const rgbOutput = document.getElementById("rgb-output");
   const changeBtn = document.getElementById("color-change-btn");
-  const copyBtn = document.getElementById("copy-btn");
+  const hexCopyBtn = document.getElementById("hex-copy-btn");
+  const rbgCopyBtn = document.getElementById("rbg-copy-btn");
 
   changeBtn.addEventListener("click", function () {
     //passing decimal color as a parameter, because hex and rgb color should be the same, that's why passing generateDecimalColor() from a common function
@@ -21,8 +22,8 @@ function main() {
     rgbOutput.value = rgb;
   });
 
-  //copy color code
-  copyBtn.addEventListener("click", function () {
+  //copy Hex color code
+  hexCopyBtn.addEventListener("click", function () {
     navigator.clipboard.writeText(`#${output.value}`);
     if (toasterDiv != null) {
       toasterDiv.remove();
@@ -36,6 +37,21 @@ function main() {
     }
   });
 
+  //copy RGB color code
+  rbgCopyBtn.addEventListener("click", function () {
+    navigator.clipboard.writeText(rgbOutput.value);
+    if (toasterDiv != null) {
+      toasterDiv.remove();
+      toasterDiv = null;
+    }
+
+    if (isValidHex(output.value)) {
+      generateToastMessage(`${rgbOutput.value} copied`);
+    } else {
+      alert("color code not matched!");
+    }
+  });
+
   //change bgColor based on use input
   output.addEventListener("keyup", function (e) {
     const color = e.target.value;
@@ -43,6 +59,7 @@ function main() {
       output.value = color.toUpperCase();
       if (isValidHex(color)) {
         root.style.backgroundColor = `#${color}`;
+        rgbOutput.value = convertHexToRgb(color);
       }
     }
   });
@@ -76,6 +93,15 @@ function generateHexColor({ red, green, blue }) {
 //Generate random hex color: rgb(0, 0, 0), rgb(255, 0, 0)
 function generateRGBColor({ red, green, blue }) {
   // const { red, green, blue } = generateDecimalColor();
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+
+//Convert hex to rgb color
+function convertHexToRgb(hex) {
+  const red = parseInt(hex.slice(0, 2), 16); //16 - we can't convert hexadecimal to int, that;s why should use hexadecimal base 16
+  const green = parseInt(hex.slice(2, 4), 16);
+  const blue = parseInt(hex.slice(4), 16);
+
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
