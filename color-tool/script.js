@@ -7,13 +7,18 @@ window.onload = () => {
 function main() {
   const root = document.getElementById("root");
   const output = document.getElementById("output");
+  const rgbOutput = document.getElementById("rgb-output");
   const changeBtn = document.getElementById("color-change-btn");
   const copyBtn = document.getElementById("copy-btn");
 
   changeBtn.addEventListener("click", function () {
-    const bgColor = generateHexColor();
-    root.style.backgroundColor = bgColor;
-    output.value = bgColor.substring(1).toUpperCase();
+    //passing decimal color as a parameter, because hex and rgb color should be the same, that's why passing generateDecimalColor() from a common function
+    const decimalColor = generateDecimalColor();
+    const hex = generateHexColor(decimalColor);
+    const rgb = generateRGBColor(decimalColor);
+    root.style.backgroundColor = hex;
+    output.value = hex.substring(1).toUpperCase();
+    rgbOutput.value = rgb;
   });
 
   //copy color code
@@ -43,13 +48,35 @@ function main() {
   });
 }
 
-//Generate random hex color: #000, #fff
-function generateHexColor() {
+//Generate decimal color - return obj
+function generateDecimalColor() {
   const red = Math.floor(Math.random() * 255);
   const green = Math.floor(Math.random() * 255);
   const blue = Math.floor(Math.random() * 255);
 
-  return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+  return {
+    red,
+    green,
+    blue,
+  };
+}
+
+//Generate random hex color: #000, #fff
+function generateHexColor({ red, green, blue }) {
+  // const { red, green, blue } = generateDecimalColor();
+
+  const getTwoCode = (value) => {
+    const hex = value.toString(16);
+    return hex.length === 1 ? `0${hex}` : hex;
+  };
+
+  return `#${getTwoCode(red)}${getTwoCode(green)}${getTwoCode(blue)}`;
+}
+
+//Generate random hex color: rgb(0, 0, 0), rgb(255, 0, 0)
+function generateRGBColor({ red, green, blue }) {
+  // const { red, green, blue } = generateDecimalColor();
+  return `rgb(${red}, ${green}, ${blue})`;
 }
 
 //Toast Message generate

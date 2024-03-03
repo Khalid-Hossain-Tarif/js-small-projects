@@ -27,16 +27,30 @@ body {
   text-transform: uppercase;
 }
 
-.input-block {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 4px;
-  margin: 30px 0;
+.color-code-heading {
+  margin-top: 30px;
+  font-family: "Lucida Sans", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  text-shadow: 2px 2px #000000;
 }
 
-.input-block p {
+.input-block {
+  display: grid;
+  place-content: center;
+}
+
+.input-item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  margin: 15px 0;
+}
+
+.input-block .hash-tag {
   position: absolute;
   left: 0;
   top: 50%;
@@ -55,13 +69,16 @@ input[type="text"] {
   box-shadow: 2px 4px 10px #b3b1b1;
   color: #333;
   padding: 10px;
-  margin-left: 30px;
   height: 40px;
   width: 300px;
 
   &:focus {
     border-color: #000;
   }
+}
+
+.hex-code-input {
+  margin-left: 30px;
 }
 
 button {
